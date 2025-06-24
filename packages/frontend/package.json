@@ -1,0 +1,24 @@
+{
+  "name": "biocryptor-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/frontend",
+    "packages/backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "npm run dev --workspace=packages/backend",
+    "dev:frontend": "npm run dev --workspace=packages/frontend",
+    "build": "npm run build --workspace=packages/backend && npm run build --workspace=packages/frontend",
+    "build:backend": "npm run build --workspace=packages/backend",
+    "build:frontend": "npm run build --workspace=packages/frontend",
+    "start": "npm run start --workspace=packages/backend",
+    "lint": "npm run lint --workspace=packages/frontend && npm run lint --workspace=packages/backend",
+    "clean": "rimraf packages/*/dist packages/*/build packages/*/node_modules"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "rimraf": "^5.0.5"
+  }
+}
